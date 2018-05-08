@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:8
+      - image: google/cloud-sdk:latest
     steps:
       - checkout
-      - run: node -v
+      - run: gcloud version
