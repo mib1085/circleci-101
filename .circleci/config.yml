@@ -11,3 +11,5 @@ jobs:
       - run: gcloud config configurations list
       - run: gcloud config set project sc-neptune-dev
       - run: gcloud config configurations list
+      - run: gsutil ls
+      - run: gsutil ls gs://marki-test/
