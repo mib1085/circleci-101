@@ -5,10 +5,11 @@ jobs:
       - image: google/cloud-sdk:latest
     steps:
       - checkout
+      - run: env
       - run: gcloud version
+      - run: echo $GCLOUD_SERVICE_KEY > gcloud-service-key.json
+      - run: gcloud auth activate-service-account --key-file $GCLOUD_SERVICE_KEY
       - run: gcloud config configurations list
-      - run: gcloud auth activate-service-account --key-file sc-neptune-dev-238c62c70599.json
-      - run: gcloud config configurations list
-      - run: gcloud config set project sc-neptune-dev
+      - run: gcloud config set project $GCLOUD_PROJECT
       - run: gcloud config configurations list
       - run: gsutil ls gs://marki-test/
