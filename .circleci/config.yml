@@ -13,3 +13,4 @@ jobs:
       - run: gcloud config set project $GCLOUD_PROJECT
       - run: gcloud config configurations list
       - run: gsutil ls gs://marki-test/
+      - run: echo $SC_PROJECT
