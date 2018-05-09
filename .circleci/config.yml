@@ -6,3 +6,4 @@ jobs:
     steps:
       - checkout
       - run: gcloud version
+      - run: gcloud config configurations list
