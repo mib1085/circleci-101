@@ -6,8 +6,8 @@ jobs:
     steps:
       - checkout
       - run: gcloud version
-      - run: echo $GCLOUD_SERVICE_KEY > gcloud-service-key.json
-      - run: gcloud auth activate-service-account --key-file gcloud-service-key.json
+      - run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
+      - run: gcloud auth activate-service-account --key-file .circleci/gcloud-service-key.json
       - run: gcloud config set project $PROJECT_ID
       - run: find
       - run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.circleci.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
