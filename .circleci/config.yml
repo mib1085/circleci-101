@@ -7,3 +7,7 @@ jobs:
       - checkout
       - run: gcloud version
       - run: gcloud config configurations list
+      - run: gcloud auth activate-service-account --key-file sc-neptune-dev-238c62c70599.json
+      - run: gcloud config configurations list
+      - run: gcloud config set project sc-neptune-dev
+      - run: gcloud config configurations list
