@@ -8,7 +8,7 @@ jobs:
       - run: env
       - run: gcloud version
       - run: echo $GCLOUD_SERVICE_KEY > gcloud-service-key.json
-      - run: gcloud auth activate-service-account --key-file $GCLOUD_SERVICE_KEY
+      - run: gcloud auth activate-service-account --key-file gcloud-service-key.json
       - run: gcloud config configurations list
       - run: gcloud config set project $GCLOUD_PROJECT
       - run: gcloud config configurations list
