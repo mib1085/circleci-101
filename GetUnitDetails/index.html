@@ -1,0 +1,32 @@
+<html>
+    <head>
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <script src='https://storage.googleapis.com/sc-neptune-dev-static-web-content/javascript/sc__utility.js'></script>
+
+    </head>
+    <body>
+      <div id='card1'></div>
+      <script src='./index.js'></script>
+      <script>
+        var data = {
+          "bayId": "12a",
+          "sectorId": "employeeParking",
+          "siteId": "hopeHospital",
+          "regionId": "auckland",
+          "orgId": "acme",
+          "lastUpdated": 1496025214182,
+          "name": "Bay 12",
+          "description": "The most wonderful thing",
+          "lat": -36.8485,
+          "long": 174.7633,
+          "alt": 160
+        };
+        var element = document.getElementById('card1');
+        _sc_getBayDetails(data)
+          .then(( value ) => {
+            element.appendChild(value);
+          });
+      </script>
+
+    </body>
+</html>

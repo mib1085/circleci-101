@@ -3,15 +3,12 @@ jobs:
   build:
     docker:
       - image: google/cloud-sdk:latest
-    environment:
-      - STORAGE_BUCKET: ${PROJECT_NAME}-static-web-content
     steps:
       - checkout
       - run: gcloud version
       - run: echo $GCLOUD_SERVICE_KEY > gcloud-service-key.json
       - run: gcloud auth activate-service-account --key-file gcloud-service-key.json
       - run: gcloud config set project $PROJECT_ID
-      - run: echo $STORAGE_BUCKET
-      #- run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.*.md$|.*.sh$' . gs://${PROJECT_NAME}-static-web-content/tiles
-      #- run: gsutil -m setmeta -r -h cache-control:no-cache gs://${PROJECT_NAME}-static-web-content/tiles
-      #- run: gsutil -m acl ch -u AllUsers:R -r gs://${PROJECT_NAME}-static-web-content/tiles
+      - run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
+      - run: gsutil -m setmeta -r -h cache-control:no-cache gs://marki-test/tiles
+      - run: gsutil -m acl ch -u AllUsers:R -r gs://marki-test/tiles

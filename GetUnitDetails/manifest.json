@@ -1,0 +1,8 @@
+{
+  "title": "Unit Details",
+  "functionUrl": "https://storage.googleapis.com/sc-neptune-dev-static-web-content/tiles/GetUnitDetails/index.js",
+  "apiUrl": "https://us-central1-sc-neptune-dev.cloudfunctions.net/api/orgs/{orgId}/regions/{regionId}/sites/{siteId}/sectors/{sectorId}/units/{unitId}",
+  "functionName": "_sc_getUnitDetails",
+  "screenshotUrl": "https://storage.googleapis.com/sc-neptune-dev-static-web-content/screenshots/unitDetails.png",
+  "level": "units"
+}
