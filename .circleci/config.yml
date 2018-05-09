@@ -9,6 +9,7 @@ jobs:
       - run: echo $GCLOUD_SERVICE_KEY > gcloud-service-key.json
       - run: gcloud auth activate-service-account --key-file gcloud-service-key.json
       - run: gcloud config set project $PROJECT_ID
-      - run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
+      - run: find
+      - run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.circleci.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
       - run: gsutil -m setmeta -r -h cache-control:no-cache gs://marki-test/tiles
       - run: gsutil -m acl ch -u AllUsers:R -r gs://marki-test/tiles
