@@ -5,9 +5,9 @@ jobs:
       #- image: node:carbon-alpine
       - image: google/cloud-sdk:latest
     steps:
+      - checkout
       - run: echo $CIRCLE_COMPARE_URL
       - run: ./deploy.sh
-      #- checkout
       #- run: gcloud version
       #- run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
       #- run: gcloud auth activate-service-account --key-file .circleci/gcloud-service-key.json
