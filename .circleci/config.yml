@@ -6,7 +6,7 @@ jobs:
       - image: google/cloud-sdk:latest
     steps:
       - run: echo $CIRCLE_COMPARE_URL
-      - run: git --version
+      - run: ./deploy.sh
       #- checkout
       #- run: gcloud version
       #- run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
