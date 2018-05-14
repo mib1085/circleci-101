@@ -2,10 +2,11 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:carbon-alpine
-      #- image: google/cloud-sdk:latest
+      #- image: node:carbon-alpine
+      - image: google/cloud-sdk:latest
     steps:
       - run: echo $CIRCLE_COMPARE_URL
+      - run: git --version
       #- checkout
       #- run: gcloud version
       #- run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
