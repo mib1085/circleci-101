@@ -2,14 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: google/cloud-sdk:latest
+      - image: node:carbon-alpine
+      #- image: google/cloud-sdk:latest
     steps:
-      - checkout
-      - run: gcloud version
-      - run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
-      - run: gcloud auth activate-service-account --key-file .circleci/gcloud-service-key.json
-      - run: gcloud config set project $PROJECT_ID
-      - run: find
-      - run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.circleci.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
-      - run: gsutil -m setmeta -r -h cache-control:no-cache gs://marki-test/tiles
-      - run: gsutil -m acl ch -u AllUsers:R -r gs://marki-test/tiles
+      - run: echo $CIRCLE_COMPARE_URL
+      #- checkout
+      #- run: gcloud version
+      #- run: echo $GCLOUD_SERVICE_KEY > .circleci/gcloud-service-key.json
+      #- run: gcloud auth activate-service-account --key-file .circleci/gcloud-service-key.json
+      #- run: gcloud config set project $PROJECT_ID
+      #- run: find
+      #- run: gsutil -m rsync -c -d -r -x '.*/.*\.html$|.git.*$|.circleci.*$|.*.md$|.*.sh$' . gs://marki-test/tiles
+      #- run: gsutil -m setmeta -r -h cache-control:no-cache gs://marki-test/tiles
+      #- run: gsutil -m acl ch -u AllUsers:R -r gs://marki-test/tiles
