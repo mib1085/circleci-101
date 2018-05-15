@@ -8,22 +8,25 @@ use strict;
 #my $URL = "https://github.com/mib1085/circleci-101/compare/219f8a72749e...580a9e9599d5";
 my $URL = $ENV{'CIRCLE_COMPARE_URL'};
 
-sub delete_fn {
+sub del_fn {
   my $fn = $_[0];
-  print "check_delete $fn\n";
-  if ($fn =~ /^\w+\-[\w\-\/]+\/\w+/) {
-    print "delete $fn\n";
+  if ($fn =~ /^\w+\-[\w\-]+\/(\w+)\/\w+/) {
+    print "deleting ${1}...\n";
   }
-  print "\n";
 }
 
-sub deploy_fn {
+sub add_fn {
   my $fn = $_[0];
-  print "check_deploy $fn\n";
-  if ($fn =~ /^\w+\-[\w\-\/]+\/\w+/) {
-    print "deploy $fn\n";
+  if ($fn =~ /^\w+\-[\w\-]+\/(\w+)\/\w+/) {
+    print "adding ${1}...\n";
   }
-  print "\n";
+}
+
+sub mod_fn {
+  my $fn = $_[0];
+  if ($fn =~ /^\w+\-[\w\-]+\/(\w+)\/\w+/) {
+    print "updating ${1}...\n";
+  }
 }
 
 $URL =~ /.*\/(.*)/;
@@ -40,11 +43,11 @@ while (<CMD>) {
   } elsif (/^\+\+\+ (.*)/) {
     $right = $1;
     if ($right =~ /^\// && $left =~ /^a\/(.*)/) {
-      delete_fn($1);
+      del_fn($1);
     } elsif ($left =~ /^\// && $right =~ /^b\/(.*)/) {
-      deploy_fn($1);
+      add_fn($1);
     } elsif ($left =~ /^a\// && $right =~ /^b\/(.*)/) {
-      deploy_fn($1);
+      mod_fn($1);
     }
   }
 }
